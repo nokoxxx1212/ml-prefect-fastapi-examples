@@ -1,0 +1,44 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "recommendation-api"
+version = "0.1.0"
+description = "A simple recommendation API using FastAPI"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.95.1"
+uvicorn = "^0.18.3"
+pydantic = "^1.10.0"
+pyyaml = "^6.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"
+flake8 = "^6.0.0"
+black = "^23.3.0"
+isort = "^5.12.0"
+pyright = "^1.1.242"
+
+[tool.pyright]
+pythonVersion = "3.9"
+typeCheckingMode = "strict"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203"]  # Black compatible
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.pytest]
+addopts = "--maxfail=1 --disable-warnings -q"

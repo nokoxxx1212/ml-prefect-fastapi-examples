@@ -162,3 +162,4 @@ cython_debug/
 #.idea/
 ml_pipeline/ml_pipeline/results/output.yaml
 ml_pipeline/poetry.lock
+api/poetry.lock
