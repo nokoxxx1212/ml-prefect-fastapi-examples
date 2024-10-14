@@ -1,8 +1,9 @@
+from app.infrastructure.clients.client_interface import IClient
 from dataclasses import dataclass
 from app.utils.const import BIGTABLE_PROJECT_ID, BIGTABLE_INSTANCE_ID
 
 @dataclass(frozen=True)
-class BigTableClient:
+class BigTableClient(IClient):
     """
     BigTableへの接続を管理するクラス。
     """
