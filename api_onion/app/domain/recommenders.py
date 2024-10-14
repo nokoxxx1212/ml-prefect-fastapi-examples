@@ -20,13 +20,9 @@ class StaticItemRecommender(IRecommender):
         # 固定の推薦アイテムを返す
         return ["itemS1", "itemS2", "itemS3"]
 
-class BigTableRecommender(IRecommender):
-    """
-    Bigtableから推薦アイテムを取得する具体的なクラス。
-    """
+class ItemRecommender(IRecommender):
     def __init__(self, client: IClient):
         self.repository = RecommendItemRepository(client)
 
     async def recommend(self, user_id: str):
-        # BigTableからデータを取得
         return self.repository.get_recommendations(user_id)

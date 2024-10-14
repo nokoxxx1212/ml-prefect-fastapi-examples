@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from app.application.recommend_service import RecommendService
 from app.domain.recommenders import IRecommender
 from app.domain.recommenders import StaticItemRecommender
-from app.domain.recommenders import BigTableRecommender
+from app.domain.recommenders import ItemRecommender
 from app.infrastructure.clients.bigtable import BigTableClient
 
 async def lifespan(app: FastAPI):
@@ -14,7 +14,7 @@ app = FastAPI(lifespan=lifespan)
 # 依存性注入
 # def get_recommend_service(recommender: IRecommender = Depends(StaticItemRecommender)):
 #     return RecommendService(recommender)
-def get_recommend_service(recommender: IRecommender = Depends(lambda: BigTableRecommender(BigTableClient()))):
+def get_recommend_service(recommender: IRecommender = Depends(lambda: ItemRecommender(BigTableClient()))):
     return RecommendService(recommender)
 
 @app.get("/recommendations")
